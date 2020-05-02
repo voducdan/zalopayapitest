@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Thanh toán Zalopay</title>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="shortcut icon"
+			type="image/png"
+			href="https://docs.zalopay.vn/images/favicon/favicon-32x32.png"
+		/>
+	</head>
+	<body style="background-color: #f4f4f4;">
+		<% if (error) { %>
+		<div class="alert alert-danger" role="alert">
+			<%=error %>
+		</div>
+		<% } %>
+		<div class="container mt-5">
+			<h3 class="mt-3">Giỏ hàng</h3>
+			<div class="card" style="width: 18rem;">
+				<img
+					class="card-img-top"
+					src="images/knb.jpg"
+					alt="Kim nguyen bao"
+				/>
+				<div class="card-body">
+					<h5 class="card-title">
+						Kim Nguyên bảo Võ Lâm Truyền Kỳ
+					</h5>
+					<a class="btn btn-primary" href="/createorder"
+						>Thanh toán</a
+					>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

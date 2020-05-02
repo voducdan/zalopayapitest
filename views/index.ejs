@@ -7,6 +7,11 @@
 		<title>ZaloPay Demo</title>
 		<link rel="stylesheet" href="styles/styles.css" />
 		<link
+			rel="shortcut icon"
+			type="image/png"
+			href="https://docs.zalopay.vn/images/favicon/favicon-32x32.png"
+		/>
+		<link
 			rel="stylesheet"
 			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -117,9 +122,27 @@
 					</ul>
 					<div class="form-group">
 						<label for="bankcode">Ngân hàng</label>
-						<select id="bankcode" class="form-control" name="bank">
+						<select
+							id="bankcode"
+							class="form-control"
+							name="bankcode"
+						>
 							<option value="">Không chọn</option>
-							<option value="chon"> chọn</option>
+							<% banklist['36'].forEach(function(bank){ %>
+							<option value="<%=bank.bankcode%>"
+								><%=bank.name%></option
+							>
+							<% }); %> <% banklist['38'].forEach(function(bank){
+							%>
+							<option value="<%=bank.bankcode%>"
+								><%=bank.name%></option
+							>
+							<% }); %> <% banklist['39'].forEach(function(bank){
+							%>
+							<option value="<%=bank.bankcode%>"
+								><%=bank.name%></option
+							>
+							<% }); %>
 						</select>
 					</div>
 				</div>
@@ -142,15 +165,15 @@
 					</p>
 					<div class="form-group">
 						<label for="paymentcode"
-							>Mã thanh toán
-							<span class="text-danger">*</span></label
+							>Mã thanh toán <span class="text-danger">*</span>(Mã
+							thanh toán demo 542373909900000106)</label
 						>
 						<input
 							type="text"
 							class="form-control"
 							id="paymentcode"
 							placeholder="Nhập mã thanh toán"
-							name="paymentid"
+							name="paymentcode"
 						/>
 						<small class="text-muted"
 							>Bạn có thể quét mã thanh toán
