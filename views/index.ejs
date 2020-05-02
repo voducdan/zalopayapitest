@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>ZaloPay Demo</title>
+		<link rel="stylesheet" href="styles/styles.css" />
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-white">
+			<a class="navbar-brand" href="/">
+				<img src="images/logo-zalopay.svg" alt="Logo ZaloPay" />
+			</a>
+		</nav>
+
+		<form
+			id="myForm"
+			class="container mt-5"
+			action="/createorder"
+			method="POST"
+		>
+			<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a
+						class="nav-link active"
+						id="qr-tab"
+						data-toggle="tab"
+						href="#qrpay"
+						role="tab"
+						aria-controls="qrpay"
+						aria-selected="true"
+						>QR</a
+					>
+				</li>
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						id="gateway-tab"
+						data-toggle="tab"
+						href="#gateway"
+						role="tab"
+						aria-controls="gateway"
+						aria-selected="false"
+						>Gateway</a
+					>
+				</li>
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						id="quickpay-tab"
+						data-toggle="tab"
+						href="#quickpay"
+						role="tab"
+						aria-controls="quickpay"
+						aria-selected="false"
+						>Quickpay</a
+					>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div
+					class="tab-pane fade show active"
+					id="qrpay"
+					role="tabpanel"
+					aria-labelledby="qrpay-tab"
+				>
+					<div
+						class="d-flex align-items-center justify-content-center"
+					>
+						<div id="qrcontainer" class="d-none text-center">
+							<canvas id="qrcode" class="border rounded"></canvas>
+							<p>
+								<a id="web2app-link">
+									<small
+										>Mở link này trên mobile để test Mobile
+										Web To App</small
+									>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div
+					class="tab-pane fade"
+					id="gateway"
+					role="tabpanel"
+					aria-labelledby="gateway-tab"
+				>
+					<label>Thông tin thẻ test</label>
+					<ul>
+						<li><b>Số thẻ:</b> 4111111111111111</li>
+						<li><b>Tên:</b> NGUYEN VAN A</li>
+						<li><b>Ngày hết hạn:</b> 01/21</li>
+						<li><b>Mã CVV:</b> 123</li>
+					</ul>
+					<div class="form-group">
+						<label for="bankcode">Ngân hàng</label>
+						<select id="bankcode" class="form-control" name="bank">
+							<option value="">Không chọn</option>
+							<option value="chon"> chọn</option>
+						</select>
+					</div>
+				</div>
+				<div
+					class="tab-pane fade"
+					id="quickpay"
+					role="tabpanel"
+					aria-labelledby="quickpay-tab"
+				>
+					<p
+						id="loading"
+						class="align-items-center mb-4"
+						style="display: none;"
+					>
+						<span
+							class="spinner-border text-primary"
+							role="status"
+						></span>
+						<b class="text-primary ml-2">Đang xử lý...</b>
+					</p>
+					<div class="form-group">
+						<label for="paymentcode"
+							>Mã thanh toán
+							<span class="text-danger">*</span></label
+						>
+						<input
+							type="text"
+							class="form-control"
+							id="paymentcode"
+							placeholder="Nhập mã thanh toán"
+							name="paymentid"
+						/>
+						<small class="text-muted"
+							>Bạn có thể quét mã thanh toán
+							<a
+								href="https://mep.zpapps.vn/docs/quickpay/demo.html"
+								target="_blank"
+								>ở đây</a
+							>
+							(Click
+							<img src="/images/scanicon.png" width="60" /> ở
+							trường "Mã thanh toán")</small
+						>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description">Mô tả</label>
+				<textarea
+					type="text"
+					class="form-control"
+					id="description"
+					placeholder="Nhập mô tả"
+					name="description"
+				></textarea>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1"
+					>Số tiền <span class="text-danger">*</span></label
+				>
+				<input
+					type="number"
+					class="form-control"
+					id="amount"
+					placeholder="Nhập số tiền"
+					value="50000"
+					name="amount"
+				/>
+				<small class="form-text text-muted"
+					>Số tiền tối thiểu là 1000 VNĐ</small
+				>
+			</div>
+			<div class="form-group">
+				<input
+					type="text"
+					class="form-control"
+					value=""
+					name="type"
+					id="type"
+					hidden
+				/>
+			</div>
+			<button type="submit" class="btn btn-primary">Thanh toán</button>
+		</form>
+	</body>
+</html>
+
+<script>
+	const selectType = document.querySelectorAll('.nav-item a');
+	let type = document.querySelector('#type');
+	type.value = 'QR';
+	selectType.forEach((item) => {
+		item.onclick = function () {
+			type.value = item.innerText;
+		};
+	});
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Quét mã QR</title>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body>
+		<div
+			class="container text-center mt-5 d-flex flex-column justify-content-center align-items-center"
+		>
+			<div class="qr-img text-center">
+				<img src="<%=src %>" alt="" />
+				<p style="color: rgb(5, 194, 5); font-size: 20px;">
+					Đang chờ thanh toán....
+				</p>
+			</div>
+			<div class="instruction text-left">
+				<h3 class="mb-4">
+					Thanh toán
+					<img
+						src="images/logozlp1.png"
+						style="width: 95px;"
+						alt=""
+					/>
+					bằng mã QR
+				</h3>
+				<b>Hướng dẫn thanh toán</b>
+				<p>Bước 1: Mở ứng dụng zalopay</p>
+				<p>
+					Bước 2: Chọn "Thanh toán"
+					<img src="images/qr-scan-zlp.png" alt="" /> và quét mã QR
+				</p>
+				<p>Bước 3: Xác nhận thanh toán ở ứng dụng</p>
+			</div>
+		</div>
+	</body>
+</html>
